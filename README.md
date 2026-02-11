@@ -8,7 +8,7 @@
 Данные генерируются с помощью функции generate_data. Предположим, что то, сколько раз пользователь увидел рекламу (views) распределено логнормально (большинство пользователей увидело мало рекламы, но некоторые - много). Пусть CTR пользователя (user CTR) описывается бета распределением (хорошо подходит, потому что область определения - [0, 1]). Тогда количество переходов на рекламный сайт (clicks) распределено биномиально, где число испытаний - это views, а вероятность успеха p - это user CTR.
 
 <details>
-<summary>Генерация данных
+<summary>Генерация данных</summary>
          
 ```python
 def generate_data(n_users, success_rate, beta, uplift=0):
@@ -45,7 +45,7 @@ A/B и A/A тесты:
    Используем функцию stats.mannwhitneyu, которая будет сравнивать медианы количеств нажатий на рекламу для групп A и B (clicks).
    ![Сгенерированные данные](slides/mannwhitneyu.png)
    <details>
-   <summary>A/B тест. Манн-Уитни
+   <summary>A/B тест. Манн-Уитни</summary>
       
          ```python
           #A/B тест (тест Манна-Уитни)
@@ -86,7 +86,7 @@ A/B и A/A тесты:
          ```
    </details>
    <details>
-   <summary>A/A тест. Манн-Уитни
+   <summary>A/A тест. Манн-Уитни</summary>
       
          ```python
           #A/A тест (тест Манна-Уитни)
@@ -132,7 +132,7 @@ A/B и A/A тесты:
    Используем функцию stats.ttest_ind, которая будет сравнивать медианы количеств нажатий на рекламу для групп A и B (clicks).
    ![Сгенерированные данные](slides/t_test.png)
    <details>
-   <summary>A/B тест. t - тест
+   <summary>A/B тест. t - тест</summary>
       
          ```python
          #A/B тест (t тест)
@@ -172,7 +172,7 @@ A/B и A/A тесты:
          ```
    </details>
    <details>
-   <summary>A/A тест. t - тест
+   <summary>A/A тест. t - тест</summary>
       
          ```python
          #A/A тест (t тест)
@@ -222,7 +222,7 @@ A/B и A/A тесты:
    Вклад каждого пользователя в глобальный CTR пропорционален количеству его просмотров.
    Для реализации этого теста была написана соответствующая функция:
    <details>
-   <summary>Poisson bootstrap
+   <summary>Poisson bootstrap</summary>
       
          ```python
          def bootstrap(ctrs_0, weights_0, ctrs_1, weights_1, n_bootstrap=2000):
@@ -244,7 +244,7 @@ A/B и A/A тесты:
    
    ![Сгенерированные данные](slides/bootstrap.png)
    <details>
-   <summary>A/B тест. Poisson bootstrap
+   <summary>A/B тест. Poisson bootstrap</summary>
       
          ```python
          #A/B тест (Poisson bootsrtap)
@@ -290,7 +290,7 @@ A/B и A/A тесты:
          ```
    </details>
    <details>
-   <summary>A/A тест. Poisson bootstrap
+   <summary>A/A тест. Poisson bootstrap</summary>
       
          ```python
          #A/A тест (Poisson bootsrtap)
@@ -343,7 +343,7 @@ A/B и A/A тесты:
    стандартный t-тест к этим мета-пользователям, поскольку корзины независимы.
    Для реализации этого теста была написана соответствующая функция:
    <details>
-   <summary>Bucketization
+   <summary>Bucketization</summary>
       
          ```python
          def bucketization(ctrs_0, weights_0, ctrs_1, weights_1, n_buckets=2000):
@@ -363,7 +363,7 @@ A/B и A/A тесты:
    
    ![Сгенерированные данные](slides/bucketization.png)
    <details>
-   <summary>A/B тест. Bucketization
+   <summary>A/B тест. Bucketization</summary>
       
          ```python
          #A/B тест (Bucketization)
@@ -409,7 +409,7 @@ A/B и A/A тесты:
          ```
    </details>
    <details>
-   <summary>A/A тест. Bucketization
+   <summary>A/A тест. Bucketization</summary>
       
          ```python
          #A/A тест (Bucketization)
