@@ -7,19 +7,19 @@
 Данные:
 Данные генерируются с помощью функции generate_data. Предположим, что то, сколько раз пользователь увидел рекламу (views) распределено логнормально (большинство пользователей увидело мало рекламы, но некоторые - много). Пусть CTR пользователя (user CTR) описывается бета распределением (хорошо подходит, потому что область определения - [0, 1]). Тогда количество переходов на рекламный сайт (clicks) распределено биномиально, где число испытаний - это views, а вероятность успеха p - это user CTR.
 <details>
-      <summary>Генерация данных
+<summary>Генерация данных
          
-      ```python
-      def generate_data(n_users, success_rate, beta, uplift=0):
-        mean = success_rate * (1 + uplift)
-        alpha = (mean * beta) / (1 - mean)
-       
-        user_ctrs = np.random.beta(alpha, beta, size=n_users)
-        views = np.random.lognormal(mean=1, sigma=2.0, size=n_users).astype(int) + 1
-        clicks = np.random.binomial(n=views, p=user_ctrs)
-       
-        return views, clicks, user_ctrs
-      ```
+```python
+def generate_data(n_users, success_rate, beta, uplift=0):
+  mean = success_rate * (1 + uplift)
+  alpha = (mean * beta) / (1 - mean)
+ 
+  user_ctrs = np.random.beta(alpha, beta, size=n_users)
+  views = np.random.lognormal(mean=1, sigma=2.0, size=n_users).astype(int) + 1
+  clicks = np.random.binomial(n=views, p=user_ctrs)
+ 
+  return views, clicks, user_ctrs
+```
 </details>
 
 1. Задаем N (количество пользователей) для контрольной и тестовой групп. В данном случай N = 5000.
